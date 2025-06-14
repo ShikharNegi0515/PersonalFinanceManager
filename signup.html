@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up | Finance Buddy</title>
+    <link rel="icon" type="image/png" href="image/logo.jpg" />
+    <link rel="stylesheet" href="styles/style.css" />
+</head>
+
+<body class="split-layout">
+    <div class="left-side">
+        <div class="overlay">
+            <h1>Manage Your Finances Smartly</h1>
+            <p>Join now and start tracking your budget and savings effortlessly.</p>
+        </div>
+    </div>
+    <div class="right-side">
+        <div class="form-box">
+            <h2 class="brand-heading">Sign Up</h2>
+            <form id="signup-form" class="form">
+                <input type="text" id="name" placeholder="Full Name" required />
+                <input type="email" id="signup-email" placeholder="Email Address" required />
+                <input type="password" id="signup-password" placeholder="Password" required />
+                <button type="submit" class="btn">Sign Up</button>
+            </form>
+            <div class="form-footer">
+                <a href="#">Forgot Password?</a>
+                <a href="login.html" class="secondary">Already have an account?</a>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="scripts/firebase.js"></script>
+    <script type="module" src="scripts/auth.js"></script>
+</body>
+
+</html>

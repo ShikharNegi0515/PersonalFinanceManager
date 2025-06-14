@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | Finance Buddy</title>
+    <link rel="icon" type="image/png" href="image/logo.jpg" />
+    <link rel="stylesheet" href="styles/dashboard.css" />
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="logo-section">
+                <img src="image/logo.jpg" alt="Logo" class="logo-small" />
+                <h1>Finance Buddy</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#cards">Dashboard</a></li>
+                    <li><a href="#expense-section">Expenses</a></li>
+                    <li><a href="#income-section">Income</a></li>
+                    <li><a href="#budget-section">Budgets</a></li>
+                    <li><a href="#goals">Goals</a></li>
+                </ul>
+            </nav>
+            <button id="logout-btn">Logout</button>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <h2>Welcome, <span id="user-name">User</span></h2>
+            </header>
+
+            <section id="cards" class="cards">
+                <div class="card">
+                    <h3>Total Expenses</h3>
+                    <p id="total-expenses">₹0</p>
+                </div>
+                <div class="card">
+                    <h3>Total Income</h3>
+                    <p id="total-income">₹0</p>
+                </div>
+                <div class="card">
+                    <h3>Balance</h3>
+                    <p id="balance">₹0</p>
+                </div>
+            </section>
+
+            <!--  ================= EXPENSE ================= -->
+
+            <section id="expense-section" class="expense-section">
+                <h3>Add Expense</h3>
+                <form id="expense-form">
+                    <input type="text" id="expense-title" placeholder="Title" required />
+                    <input type="number" id="expense-amount" placeholder="Amount (₹)" required />
+                    <input type="date" id="expense-date" required />
+                    <select id="expense-category" required>
+                        <option value="">Select Category</option>
+                        <option value="Food">Food</option>
+                        <option value="Travel">Travel</option>
+                        <option value="Shopping">Shopping</option>
+                        <option value="Bills">Bills</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <input type="text" id="expense-note" placeholder="Note (optional)" />
+                    <input type="text" id="expense-tags" placeholder="Tags (comma-separated)" />
+                    <button type="submit" class="btn">Add Expense</button>
+                </form>
+
+                <h4>Expense History</h4>
+                <ul id="expense-list" class="expense-list"></ul>
+            </section>
+
+            <!--  ================= INCOME ================= -->
+
+
+            <section id="income-section" class="income-section">
+                <h3>Add Income</h3>
+                <form id="income-form">
+                    <input type="text" id="income-source" placeholder="Source" required />
+                    <input type="number" id="income-amount" placeholder="Amount (₹)" required />
+                    <input type="date" id="income-date" required />
+                    <input type="text" id="income-note" placeholder="Note (optional)" />
+                    <input type="text" id="income-tags" placeholder="Tags (comma-separated)" />
+                    <button type="submit" class="btn">Add Income</button>
+                </form>
+
+                <h4>Income History</h4>
+                <ul id="income-list" class="income-list"></ul>
+            </section>
+
+
+            <!--  ================= BUDGET ================= -->
+
+            <section id="budget-section" class="budget-section">
+                <h3>Create Budget</h3>
+                <form id="budget-form">
+                    <select id="budget-category" required>
+                        <option value="">Select Category</option>
+                        <option value="Food">Food</option>
+                        <option value="Travel">Travel</option>
+                        <option value="Shopping">Shopping</option>
+                        <option value="Bills">Bills</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <input type="number" id="budget-limit" placeholder="Monthly Limit (₹)" required />
+                    <button type="submit" class="btn">Add Budget</button>
+                </form>
+
+                <h4>Budget Overview</h4>
+                <ul id="budget-list"></ul>
+            </section>
+
+
+            <!--  ================= RECURRING ================= -->
+
+            <section id="recurring-section" class="recurring-section">
+                <h3>Add Recurring Payment</h3>
+                <form id="recurring-form">
+                    <input type="text" id="recurring-title" placeholder="Title" required />
+                    <input type="number" id="recurring-amount" placeholder="Amount (₹)" required />
+                    <input type="date" id="recurring-start-date" required />
+                    <select id="recurring-frequency" required>
+                        <option value="">Select Frequency</option>
+                        <option value="daily">Daily</option>
+                        <option value="weekly">Weekly</option>
+                        <option value="monthly">Monthly</option>
+                    </select>
+                    <select id="recurring-category" required>
+                        <option value="">Select Category</option>
+                        <option value="Food">Food</option>
+                        <option value="Travel">Travel</option>
+                        <option value="Shopping">Shopping</option>
+                        <option value="Bills">Bills</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <button type="submit" class="btn">Add Recurring</button>
+                </form>
+
+                <h4>Recurring Payments</h4>
+                <ul id="recurring-list"></ul>
+            </section>
+
+            <!-- <section id="split-expense-section" class="split-expense-section">
+                <h3>Split Expense by Category</h3>
+
+                <div id="split-expense-container">
+                </div>
+
+                <button type="button" id="add-split" class="btn">+ Add Category Split</button>
+            </section> -->
+
+
+            <!--  ================= REPORT ================= -->
+
+            <section id="summary-section" class="summary-section">
+                <h3>Expense Summary Report</h3>
+                <div class="filter-row">
+                    <label for="summary-month">Month:</label>
+                    <select id="summary-month">
+                        <option value="">All</option>
+                        <option value="01">January</option>
+                        <option value="02">February</option>
+                        <option value="03">March</option>
+                        <option value="04">April</option>
+                        <option value="05">May</option>
+                        <option value="06">June</option>
+                        <option value="07">July</option>
+                        <option value="08">August</option>
+                        <option value="09">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+
+                    <label for="summary-year">Year:</label>
+                    <select id="summary-year"></select>
+
+                    <button id="generate-summary" class="btn">Generate Summary</button>
+                </div>
+
+                <div id="summary-result"></div>
+            </section>
+
+
+            <!-- ================= CHARTS ================= -->
+
+            <section class="charts-section">
+                <h2>Expense Charts</h2>
+                <div class="charts-container">
+                    <div class="chart-box">
+                        <h3>Spending by Category</h3>
+                        <canvas id="expensePieChart"></canvas>
+                    </div>
+                    <div class="chart-box">
+                        <h3>Income vs Expense</h3>
+                        <canvas id="incomeDoughnutChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- ================= SPENDING TRENDS ================= -->
+            <section id="trends-section" class="cards">
+                <h2>Spending Trends</h2>
+                <canvas id="trendsChart" width="400" height="150"></canvas>
+            </section>
+
+            <!-- ================= GOALS ================= -->
+            <section id="goals" class="card">
+                <h3>Savings Goals</h3>
+
+                <form id="savings-form">
+                    <input type="text" id="goal-title" placeholder="Goal Title" required />
+                    <input type="number" id="goal-target" placeholder="Target Amount (₹)" required />
+                    <input type="date" id="goal-deadline" required />
+                    <button type="submit">Add Goal</button>
+                </form>
+
+                <ul id="savings-list"></ul>
+            </section>
+
+
+
+            <!--  ================= FOOTER ================= -->
+
+            <footer class="footer">
+                <p>&copy; 2025 Finance Buddy. All rights reserved.</p>
+            </footer>
+
+
+        </main>
+    </div>
+    <!-- For implementing Charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="scripts/firebase.js" type="module"></script>
+    <script src="scripts/dashboard.js" type="module"></script>
+</body>
+
+</html>
